@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About SumIt | Maths &amp; Science Equation Studio</title>
+<meta name="description" content="What SumIt is, who it's for, and why you might want it.">
+<link rel="icon" href="Assets/Assets-logo/SumIt-Logo-Iconic-Colour.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="Assets/Assets-logo/SumIt-Logo-Iconic-Colour.svg" sizes="180x180">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0B1220;--ink-soft:#1B2A41;--paper:#F5F7FB;--paper-2:#EAF1F7;--white:#FFF;--purple:#6E68CA;--purple-dark:#3D31BE;--teal:#1CC7B1;--teal-soft:#DBFBF7;--blue:#2E6BFF;--rule:#D7E2EE;--muted:#586A82;--max:1180px;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 Inter,sans-serif;-webkit-font-smoothing:antialiased}img{display:block;max-width:100%}a{color:inherit}.wrap{width:min(var(--max),100%);margin:0 auto;padding:0 32px}.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}h1,h2,h3{font-family:'Space Grotesk',sans-serif;font-weight:700;line-height:1.05;letter-spacing:-.04em;margin:0 0 .55em}h1{font-size:clamp(44px,7vw,82px);max-width:760px;letter-spacing:-.07em}h2{font-size:clamp(30px,4vw,48px)}h3{font-size:21px}p{margin:0 0 1em}.mono{font-family:'IBM Plex Mono',monospace}
+.skip{position:absolute;left:-999px;top:0;background:var(--ink);color:var(--white);padding:12px 18px;z-index:10}.skip:focus{left:0}:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.site-header{position:sticky;top:0;z-index:10;background:rgba(245,247,251,.72);border-bottom:1px solid rgba(123,145,170,.22);box-shadow:0 8px 30px rgba(11,18,32,.04);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2)}.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 32px;position:relative}.nav::after{content:"";position:absolute;inset:0;border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.32),rgba(255,255,255,0));pointer-events:none}.brand{display:flex;align-items:center;text-decoration:none;color:var(--ink);position:relative;z-index:1}.brand-logo{display:block;width:180px;height:auto;flex:none}.brand img{width:180px}.primary-links{display:flex;align-items:center;gap:24px;position:relative;z-index:1}.primary-links a,.footer-links a{font-size:14.5px;font-weight:600;text-decoration:none;color:var(--ink-soft)}.primary-links a:hover,.footer-links a:hover{color:var(--blue)}.nav-actions{display:flex;align-items:center;gap:14px;position:relative;z-index:1}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:8px;text-decoration:none;font-size:15px;font-weight:600;border:1px solid transparent;cursor:pointer}.btn-primary{color:var(--white);background:linear-gradient(135deg,var(--purple),var(--purple-dark));box-shadow:0 10px 22px rgba(61,49,190,.25)}.btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}.btn-ghost:hover{background:var(--ink);color:var(--paper)}.btn-small{padding:9px 16px;font-size:14px}
+.page-hero{position:relative;overflow:hidden;padding:78px 0 72px;background:radial-gradient(circle at 82% 20%,rgba(46,107,255,.16),transparent 28%),linear-gradient(180deg,var(--paper),#EFF4FA)}.page-hero::after{content:"∑  ∫  π  Δ";position:absolute;right:4%;bottom:-22px;color:rgba(46,107,255,.08);font:700 clamp(80px,13vw,180px)/1 'IBM Plex Mono',monospace;letter-spacing:-.12em;transform:rotate(-8deg);pointer-events:none}.eyebrow{margin-bottom:18px;color:var(--blue);font:600 13px/1.2 'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase}.hero-icon{width:72px;height:72px;margin-bottom:22px;filter:drop-shadow(0 14px 18px rgba(61,49,190,.2))}.daqorum-logo{width:190px;height:auto;margin-bottom:22px;filter:brightness(0) invert(1) drop-shadow(0 12px 18px rgba(0,40,120,.2))}.page-hero h1{margin-bottom:.25em}.page-hero h1 + .hero-intro{font-size:18px;max-width:640px}.hero-intro{max-width:700px;font-size:21px;color:var(--ink-soft)}.hero-link{display:inline-flex;margin-top:12px;color:var(--purple-dark);font-weight:700;text-decoration:none}.hero-link:hover{text-decoration:underline}
+section{padding:88px 0}.section-heading{max-width:720px;margin-bottom:42px}.section-heading p{color:var(--ink-soft);font-size:18px}.audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.audience-card{padding:26px;background:var(--white);border:1px solid var(--rule);border-radius:12px;box-shadow:0 18px 35px -30px rgba(22,33,58,.45)}.audience-card h3{font-size:20px}.audience-card p{margin:0;color:var(--muted);font-size:15px}
+.feature-list{display:grid;gap:0}.feature-item{display:grid;grid-template-columns:.82fr 1.18fr;gap:64px;align-items:center;padding:54px 0;border-top:1px solid var(--rule)}.feature-item:first-child{border-top:0;padding-top:0}.feature-item.reverse .feature-copy{order:2}.feature-item.reverse .feature-media{order:1}.feature-copy p{color:var(--ink-soft);font-size:17px}.feature-media{transform:rotate(-1deg);transition:transform .3s ease}.feature-item.reverse .feature-media{transform:rotate(1deg)}.feature-media:hover{transform:translateY(-6px) rotate(0deg)}.feature-media img{width:100%;border-radius:9px;box-shadow:0 24px 44px -26px rgba(22,33,58,.62)}
+#daqorum{padding:48px 0 88px}
+#daqorum .section-heading{position:relative;isolation:isolate;overflow:hidden;max-width:none;margin:0;padding:52px 56px;border:1px solid rgba(255,255,255,.32);border-radius:24px;background:linear-gradient(135deg,#0152ff 0%,#01def4 100%);color:var(--white);box-shadow:0 28px 60px -34px rgba(1,82,255,.55)}
+#daqorum .section-heading::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.2;background-image:linear-gradient(rgba(255,255,255,.45) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.45) 1px,transparent 1px);background-size:36px 36px;mask-image:linear-gradient(135deg,black,transparent 68%)}
+#daqorum .section-heading::after{content:"";position:absolute;top:30px;right:38px;width:82px;height:5px;border-radius:999px;background:linear-gradient(90deg,var(--purple),var(--teal));box-shadow:0 0 24px rgba(28,199,177,.35)}
+#daqorum .daqorum-logo{position:relative;z-index:1}
+#daqorum .section-heading h2{position:relative;z-index:1;color:var(--white)}
+#daqorum .section-heading p{position:relative;z-index:1;max-width:900px;color:rgba(255,255,255,.92)}
+.useful{width:calc(100% - 48px);max-width:1280px;margin:56px auto;padding:88px 0;background:var(--ink);color:var(--paper);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:28px;box-shadow:0 30px 70px -34px rgba(11,18,32,.65),0 12px 30px rgba(11,18,32,.12)}.useful::before{content:"";position:absolute;inset:0;opacity:.16;background-image:linear-gradient(rgba(215,226,238,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(215,226,238,.18) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(135deg,black,transparent 70%)}.useful .wrap{position:relative}.useful .section-heading p{color:#C7D0CB}.useful-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.useful-card{padding:22px 0;border-top:1px solid rgba(215,226,238,.2)}.useful-card h3{color:var(--white);font-size:19px}.useful-card p{color:#C7D0CB;margin:0;font-size:15px}
+.why-panel{position:relative;background:linear-gradient(135deg,#fff,#EEF3F8);border:1px solid var(--rule);border-radius:20px;padding:42px;box-shadow:0 25px 55px -35px rgba(22,33,58,.5)}.why-panel::after{content:"";position:absolute;top:28px;right:30px;width:70px;height:4px;border-radius:99px;background:linear-gradient(90deg,var(--purple),var(--teal))}.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0 28px}.why-item{padding:22px 0;border-top:1px solid var(--rule)}.why-item strong{display:block;font-family:'Space Grotesk',sans-serif;font-size:19px}.why-item p{margin:5px 0 0;color:var(--muted);font-size:15px}.start-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}.steps{display:grid;gap:0;counter-reset:steps}.step{display:grid;grid-template-columns:48px 1fr;gap:16px;padding:18px 0;border-top:1px solid var(--rule)}.step::before{counter-increment:steps;content:counter(steps,decimal-leading-zero);font:500 14px 'IBM Plex Mono',monospace;color:var(--purple-dark)}.step p{grid-column:2;margin:0;color:var(--ink-soft)}.links-panel{padding:28px;background:var(--paper-2);border-radius:14px;border:1px solid var(--rule)}.links-panel h2{font-size:26px}.links-panel ul{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px}.links-panel a{color:var(--purple-dark);font-weight:600;text-decoration:none}.links-panel a:hover{text-decoration:underline}
+footer{padding:58px 0 40px}.footer-top{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}.footer-logo{width:150px}.footer-links{display:flex;gap:20px;flex-wrap:wrap}.footer-meta{margin-top:28px;padding-top:20px;border-top:1px solid var(--rule);font-size:13px;color:var(--muted)}
+.nav{padding:10px 32px}.brand-logo,.brand img{width:150px}.primary-links{gap:18px}.primary-links a,.footer-links a{font-size:13.5px}.nav-actions{gap:10px}.btn-small{padding:8px 13px;font-size:13px}
+.accessibility{position:relative}.accessibility-toggle{display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid var(--rule);border-radius:8px;background:var(--white);color:var(--ink);font:600 13px Inter,sans-serif;cursor:pointer;white-space:nowrap}.accessibility-toggle:hover{border-color:var(--blue);color:var(--blue)}.accessibility-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.accessibility-panel{position:absolute;right:0;top:calc(100% + 10px);width:280px;padding:18px;background:var(--white);border:1px solid var(--rule);border-radius:10px;box-shadow:0 18px 40px rgba(11,18,32,.18);color:var(--ink);z-index:20}.accessibility-panel[hidden]{display:none}.accessibility-panel h2{font:700 17px 'Space Grotesk',sans-serif;letter-spacing:-.03em;margin:0 0 4px}.accessibility-panel p{font-size:13px;color:var(--muted);margin:0 0 14px}.accessibility-option{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--rule);font-size:14px;cursor:pointer}.accessibility-option input{width:18px;height:18px;accent-color:var(--blue);flex:none}body.a11y-large-text{font-size:20px}body.a11y-large-text h1{font-size:clamp(48px,7.5vw,90px)}body.a11y-large-text h2{font-size:clamp(33px,4.5vw,53px)}body.a11y-large-text h3{font-size:23px}body.a11y-large-text p,body.a11y-large-text li,body.a11y-large-text label,body.a11y-large-text input,body.a11y-large-text select,body.a11y-large-text textarea,body.a11y-large-text .btn,body.a11y-large-text nav a{font-size:1.08em}body.a11y-high-contrast{--ink:#000;--ink-soft:#101010;--paper:#fff;--paper-2:#f1f1f1;--white:#fff;--rule:#555;--muted:#303030;--blue:#0039A6;--teal:#006B5E}body.a11y-high-contrast .site-header{background:#fff;border-bottom-color:#555}body.a11y-high-contrast .btn-primary{background:#000;box-shadow:none}body.a11y-easy-read,body.a11y-easy-read *{font-family:'Atkinson Hyperlegible',Verdana,sans-serif;letter-spacing:normal}
+@media(max-width:900px){.primary-links{display:none}.audience-grid,.useful-grid{grid-template-columns:1fr 1fr}.feature-item,.feature-item.reverse{grid-template-columns:1fr;gap:30px}.feature-item.reverse .feature-copy,.feature-item.reverse .feature-media{order:initial}.start-grid{grid-template-columns:1fr;gap:36px}}
+@media(max-width:600px){.wrap{padding:0 20px}.nav{padding:10px 20px}.page-hero{padding:72px 0}.hero-intro{font-size:18px}.audience-grid,.useful-grid,.why-grid{grid-template-columns:1fr}.why-panel{padding:28px 22px}.feature-item{padding:40px 0}.page-hero::after{font-size:72px}.brand img{width:150px}.useful{width:calc(100% - 24px);margin:32px auto;padding:58px 0;border-radius:20px}#daqorum .section-heading{padding:34px 24px;border-radius:18px}#daqorum .section-heading::after{top:20px;right:24px;width:58px}.accessibility-toggle{padding:8px}.accessibility-toggle span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.accessibility-panel{position:fixed;right:12px;top:68px;width:min(280px,calc(100vw - 24px))}}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#main-content">Skip to main content</a>
+<header class="site-header">
+  <div class="nav wrap">
+    <a class="brand" href="index.html" aria-label="Daqorum SumIt home">
+      <img class="brand-logo" src="Assets/Assets-logo/SumIt Logo001.svg" alt="Daqorum SumIt logo">
+    </a>
+    <nav class="primary-links" aria-label="Primary">
+      <a href="index.html#modes">Modes</a>
+      <a href="index.html#features">Features</a>
+      <a href="index.html#why">Why SumIt</a>
+      <a href="index.html#demo">Contact Us</a>
+      <a href="help.html">Help</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="accessibility">
+        <button class="accessibility-toggle" type="button" aria-expanded="false" aria-controls="accessibility-panel"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.64 5.64l1.41 1.41M16.95 16.95l1.41 1.41M5.64 18.36l1.41-1.41M16.95 7.05l1.41-1.41"></path><circle cx="12" cy="12" r="4"></circle></svg><span>Accessibility</span></button>
+        <div class="accessibility-panel" id="accessibility-panel" role="region" aria-labelledby="accessibility-heading" hidden><h2 id="accessibility-heading">Accessibility options</h2><p>Your choices are saved on this device.</p><label class="accessibility-option"><input type="checkbox" data-a11y="high-contrast"> High contrast</label><label class="accessibility-option"><input type="checkbox" data-a11y="large-text"> Larger text</label><label class="accessibility-option"><input type="checkbox" data-a11y="easy-read"> Easy-read font</label></div>
+      </div>
+      <a class="btn btn-primary btn-small" href="https://atsuperstore.com/store/sumit">Buy SumIt</a>
+    </div>
+  </div>
+</header>
+<main id="main-content">
+  <section class="page-hero">
+    <div class="wrap">
+      <h1>About SumIt</h1>
+      <p class="hero-intro" style="margin-top:24px">SumIt is a browser-based studio for writing, speaking, drawing, calculating, graphing and exporting mathematical equations. It works entirely on your device and once it has loaded once, no internet connection is required. It runs on a phone, a tablet, a laptop, or a Chromebook, and the same code ships as native apps for iPhone, iPad, Mac, Android, and Windows.</p>
+    </div>
+  </section>
+
+  <section id="daqorum"><div class="wrap"><div class="section-heading"><img class="daqorum-logo" src="Assets/Assets-logo/Daqorum__Daqorum_Logo_Full_Colour.svg" alt="Daqorum logo"><h2>Who are Daqorum?</h2><p>Daqorum are creators and publishers of accessible technology designed to remove barriers to learning and development.</p><p>Our experience is rooted in developing practical products that solve real problems. We believe that using UDL principles technology should make it easier for people to access learning, express their ideas and realise their potential.</p></div></div></section>
+
+  <section id="who">
+    <div class="wrap">
+      <div class="section-heading"><h2>Who SumIt is for</h2><p>If you ever need to put a mathematical expression into a document, a message, a worksheet or a slide — and you've ever found that fiddly — SumIt was probably built for you.</p></div>
+      <div class="audience-grid">
+        <article class="audience-card"><h3>Students</h3><p>GCSE, A-level, undergraduate. Fast equation entry for homework, revision notes, exam practice and lab reports.</p></article>
+        <article class="audience-card"><h3>Teachers &amp; lecturers</h3><p>Build worksheets, write maths into slides, prepare exam papers, project clean equations onto a whiteboard during a lesson.</p></article>
+        <article class="audience-card"><h3>Researchers &amp; engineers</h3><p>Quickly sketch a derivation, copy LaTeX into a paper, or check a plot before reaching for a heavier tool.</p></article>
+        <article class="audience-card"><h3>Anyone with access needs</h3><p>Dictate equations by voice, use the screen-reader-friendly UI, switch to high-contrast themes, navigate entirely by keyboard.</p></article>
+        <article class="audience-card"><h3>Self-learners</h3><p>Working through Khan Academy, Brilliant or a textbook? Have a scratchpad and a calculator that talks the same language as the page you're reading.</p></article>
+        <article class="audience-card"><h3>Schools on Chromebooks</h3><p>No install, no IT approval, works offline once cached. Drops into Google Classroom or any LMS as a regular web link.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="what">
+    <div class="wrap">
+      <div class="section-heading"><h2>What you can do with it</h2></div>
+      <div class="feature-list">
+        <article class="feature-item"><div class="feature-copy"><h3>Type or paste equations</h3><p>A real-time maths editor (powered by MathLive) accepts LaTeX, keyboard shortcuts, and direct input. Autocomplete suggests named formulas as you type — start <code>sq</code> and pick "square root" without lifting your hands.</p></div><div class="feature-media"><img src="Assets/screenshots/editor.png" alt="The SumIt editor showing a quadratic with LaTeX, MathML and spoken-form tabs underneath"></div></article>
+        <article class="feature-item reverse"><div class="feature-copy"><h3>Speak equations out loud</h3><p>The Dictate tab listens to your microphone and converts spoken phrases like "x squared plus three x minus seven equals zero" straight into proper notation.</p></div><div class="feature-media"><img src="Assets/screenshots/menu.png" alt="The SumIt navigation drawer with Editor, Dictate, Draw, Scientific, Graphing, Chemistry and History tabs"></div></article>
+        <article class="feature-item"><div class="feature-copy"><h3>Draw equations by hand</h3><p>Sketch on the canvas with a finger, stylus or trackpad. SumIt recognises symbols and produces the equivalent LaTeX. Two recognisers come bundled — a fast template matcher for the common case and a neural-network model for messier handwriting — and both run on your device. No images leave your screen.</p></div><div class="feature-media"><img src="Assets/screenshots/draw.png" alt="The Draw tab showing a hand-written 1 + 1 expression with the recognised LaTeX output"></div></article>
+        <article class="feature-item reverse"><div class="feature-copy"><h3>Browse 300+ named formulas</h3><p>A searchable library covering algebra, trigonometry, calculus, statistics, mechanics, electromagnetism, thermodynamics, optics and chemistry. Tap one to drop it into the editor at the cursor. Everything is filtered by content level (≤ 16, 16 – 18, University, All) so you can hide what's irrelevant.</p></div><div class="feature-media"><img src="Assets/screenshots/formulas.png" alt="The formula library modal showing categorised entries"></div></article>
+        <article class="feature-item"><div class="feature-copy"><h3>Calculate &amp; graph</h3><p>A full scientific calculator (degrees / radians, memory, history, full operator set) and a function plotter that handles up to six functions at once in Cartesian, polar or parametric form.</p></div><div class="feature-media"><img src="Assets/screenshots/graphing.png" alt="The graphing tab plotting trigonometric functions"></div></article>
+        <article class="feature-item reverse"><div class="feature-copy"><h3>Chemistry too</h3><p>Type ordinary chemistry shorthand (<code>H2SO4 + 2NaOH -&gt; Na2SO4 + 2H2O</code>) and SumIt renders it as proper formulae and balanced equations via the mhchem package.</p></div><div class="feature-media"><img src="Assets/screenshots/chemistry.png" alt="The Chemistry tab rendering a balanced acid-base reaction"></div></article>
+        <article class="feature-item"><div class="feature-copy"><h3>Export anywhere</h3><p>Copy as LaTeX, MathML, plain Word-friendly equation, or save a PNG image. Whatever you're writing in — Word, Pages, Google Docs, Markdown, a quiz tool, a science notebook — SumIt will paste in cleanly.</p></div><div class="feature-media"><img src="Assets/screenshots/settings.png" alt="The Settings panel with content level, theme and voice options"></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="useful" id="useful">
+    <div class="wrap"><div class="section-heading"><h2>Where it's especially useful</h2></div><div class="useful-grid">
+      <article class="useful-card"><h3>Homework &amp; revision</h3><p>Snap a screenshot of a question, draw a working line, copy out the answer as a tidy LaTeX expression for your notes.</p></article>
+      <article class="useful-card"><h3>Lesson slides</h3><p>Build a worked example in the editor, export PNG, drop into PowerPoint or Keynote. Crisp at any zoom.</p></article>
+      <article class="useful-card"><h3>Worksheets</h3><p>Copy LaTeX into Word's equation editor, or paste MathML into an LMS that accepts it (Canvas, Moodle, Blackboard, …).</p></article>
+      <article class="useful-card"><h3>Lab notebooks</h3><p>Scribble a quick derivation on a tablet, hit recognise, paste the result into your write-up.</p></article>
+      <article class="useful-card"><h3>Phone in the wild</h3><p>Works offline on the bus, on a train, in a classroom with a patchy network. The first visit caches everything.</p></article>
+      <article class="useful-card"><h3>Inclusive classrooms</h3><p>Pupils who struggle with handwriting can dictate. Pupils with visual impairments can switch to a high-contrast theme and have answers read aloud.</p></article>
+    </div></div>
+  </section>
+
+  <section id="why"><div class="wrap"><div class="why-panel"><div class="section-heading"><h2>Why you might prefer SumIt</h2></div><div class="why-grid">
+    <div class="why-item"><strong>Offline</strong><p>Works fully without an internet connection after the first load</p></div>
+    <div class="why-item"><strong>Private</strong><p>Equations never leave your device. No telemetry</p></div>
+    <div class="why-item"><strong>Fast</strong><p>Renders equations in real time; the whole library lives in one tab</p></div>
+    <div class="why-item"><strong>Cross-platform</strong><p>One codebase: web, iPhone, iPad, Mac, Android, Chromebook, Windows.</p></div>
+    <div class="why-item"><strong>Accessible</strong><p>WCAG-AA contrast, full keyboard access, screen-reader-friendly</p></div>
+    <div class="why-item"><strong>UK English</strong><p>Auto-substitutes "Maths", "Colour", "Recognise" when your locale is en-GB</p></div>
+  </div></div></div></section>
+
+  <section id="getting-started" hidden><div class="wrap start-grid"><div><div class="section-heading"><h2>Getting started</h2></div><div class="steps"><div class="step"><p>Open SumIt in any modern browser, or install the iOS / Mac / Android / Windows version.</p></div><div class="step"><p>Pick a tab — Editor for typing, Dictate for speaking, Draw for handwriting.</p></div><div class="step"><p>Build your equation. Use the Formulas button if you'd rather pick from a list.</p></div><div class="step"><p>Copy, Export PNG or Save to History. That's it.</p></div></div></div><aside class="links-panel"><h2>Additional Links</h2><ul><li><a href="index.html">SumIt by Daqorum</a></li><li><a href="index.html">Home</a></li><li><a href="help.html">Help</a></li><li><a href="index.html">Launch App</a></li></ul></aside></div></section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" aria-label="Daqorum SumIt home"><img class="footer-logo" src="Assets/Assets-logo/SumIt Logo001.svg" alt="Daqorum SumIt logo"></a>
+      </div>
+      <div class="footer-links">
+        <a href="index.html#modes">Modes</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#why">Why SumIt</a>
+        <a href="index.html#demo">Contact Us</a>
+        <a href="about.html">About</a>
+        <a href="help.html">Help</a>
+      </div>
+    </div>
+    <p class="footer-meta">© 2026 Daqorum. All rights reserved. SumIt is a trademark of Daqorum.</p>
+  </div>
+</footer>
+<script>
+(function(){var toggle=document.querySelector('.accessibility-toggle'),panel=document.getElementById('accessibility-panel'),options=document.querySelectorAll('[data-a11y]'),saved={};function apply(state){options.forEach(function(option){var enabled=Boolean(state[option.dataset.a11y]);option.checked=enabled;document.body.classList.toggle('a11y-'+option.dataset.a11y,enabled);});}try{saved=JSON.parse(localStorage.getItem('sumit-accessibility'))||{};}catch(error){}apply(saved);toggle.addEventListener('click',function(){var open=toggle.getAttribute('aria-expanded')==='true';toggle.setAttribute('aria-expanded',String(!open));panel.hidden=open;if(!open)panel.querySelector('input').focus();});options.forEach(function(option){option.addEventListener('change',function(){saved[option.dataset.a11y]=option.checked;apply(saved);try{localStorage.setItem('sumit-accessibility',JSON.stringify(saved));}catch(error){}});});document.addEventListener('click',function(event){if(!event.target.closest('.accessibility')){toggle.setAttribute('aria-expanded','false');panel.hidden=true;}});}());
+</script>
+</body>
+</html>

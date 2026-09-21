@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SumIt — Maths &amp; Science Equation Studio | Daqorum</title>
+<meta name="description" content="SumIt is Daqorum's equation studio for students, teachers and researchers. Write, speak, draw, calculate, graph and export maths and science notation.">
+<meta property="og:title" content="SumIt — Maths &amp; Science Equation Studio | Daqorum">
+<meta property="og:description" content="Write, speak, draw, calculate, graph and export maths and science notation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sumit.daqorum.com/">
+<meta property="og:image" content="assets/screenshots/editor.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#16213A">
+<link rel="canonical" href="https://sumit.daqorum.com/">
+
+<link rel="icon" href="Assets/Assets-logo/SumIt-Logo-Iconic-Colour.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="Assets/Assets-logo/SumIt-Logo-Iconic-Colour.svg" sizes="180x180">
+<link rel="mask-icon" href="Assets/Assets-logo/SumIt-Logo-Iconic-Colour.svg" color="#2E6BFF">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#0B1220;
+    --ink-soft:#1B2A41;
+    --paper:#F5F7FB;
+    --paper-2:#EAF1F7;
+    --white:#FFFFFF;
+    --amber:#F5B947;
+    --amber-dark:#E29C1E;
+    --teal:#1CC7B1;
+    --teal-soft:#DBFBF7;
+    --blue:#2E6BFF;
+    --blue-soft:#EAF2FF;
+    --rule:#D7E2EE;
+    --muted:#586A82;
+    --radius:8px;
+    --max:1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:17px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  h1,h2,h3{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    line-height:1.05;
+    margin:0 0 .5em;
+    letter-spacing:-.04em;
+  }
+  p{margin:0 0 1em;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  .skip-link{
+    position:absolute;left:-999px;top:0;background:var(--ink);color:var(--paper);
+    padding:12px 18px;border-radius:0 0 6px 0;z-index:200;
+  }
+  .skip-link:focus{left:0;}
+  :focus-visible{outline:3px solid var(--teal);outline-offset:2px;}
+
+  /* ---------- Nav ---------- */
+  header.site-header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(245,247,251,.72);
+    backdrop-filter:blur(16px) saturate(1.2);
+    -webkit-backdrop-filter:blur(16px) saturate(1.2);
+    border-bottom:1px solid rgba(123,145,170,.22);
+    box-shadow:0 8px 30px rgba(11,18,32,.04);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 32px;gap:18px;position:relative;}
+  .nav::after{
+    content:"";
+    position:absolute;inset:0;
+    border-radius:18px;
+    background:linear-gradient(135deg, rgba(255,255,255,.32), rgba(255,255,255,0));
+    pointer-events:none;
+  }
+  .brand{display:flex;align-items:center;text-decoration:none;color:var(--ink);position:relative;z-index:1;}
+  .brand-logo{display:block;width:150px;height:auto;flex:none;}
+  nav.primary-links{display:flex;gap:18px;align-items:center;position:relative;z-index:1;}
+  nav.primary-links a,
+  .footer-links a{
+    text-decoration:none;
+    font-size:13.5px;
+    font-weight:600;
+    letter-spacing:-.01em;
+    color:var(--ink-soft);
+    transition:color .2s ease, opacity .2s ease;
+  }
+  nav.primary-links a:hover,
+  .footer-links a:hover{color:var(--blue);}
+  .nav-actions{display:flex;align-items:center;gap:10px;position:relative;z-index:1;}
+
+  .accessibility{position:relative;}
+  .accessibility-toggle{
+    display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid var(--rule);
+    border-radius:var(--radius);background:var(--white);color:var(--ink);font:600 13px 'Inter',sans-serif;
+    cursor:pointer;white-space:nowrap;
+  }
+  .accessibility-toggle:hover{border-color:var(--blue);color:var(--blue);}
+  .accessibility-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  .accessibility-panel{
+    position:absolute;right:0;top:calc(100% + 10px);width:280px;padding:18px;
+    background:var(--white);border:1px solid var(--rule);border-radius:10px;
+    box-shadow:0 18px 40px rgba(11,18,32,.18);color:var(--ink);
+  }
+  .accessibility-panel[hidden]{display:none;}
+  .accessibility-panel h2{font:700 17px 'Space Grotesk',sans-serif;letter-spacing:-.03em;margin:0 0 4px;}
+  .accessibility-panel p{font-size:13px;color:var(--muted);margin:0 0 14px;}
+  .accessibility-option{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--rule);font-size:14px;cursor:pointer;}
+  .accessibility-option input{width:18px;height:18px;accent-color:var(--blue);flex:none;}
+  body.a11y-large-text{font-size:20px;}
+  body.a11y-large-text h1{font-size:clamp(38px,5vw,58px);}
+  body.a11y-large-text h2{font-size:clamp(30px,3.5vw,40px);}
+  body.a11y-large-text h3{font-size:20px;}
+  body.a11y-large-text p,
+  body.a11y-large-text li,
+  body.a11y-large-text label,
+  body.a11y-large-text input,
+  body.a11y-large-text select,
+  body.a11y-large-text textarea,
+  body.a11y-large-text .btn,
+  body.a11y-large-text nav.primary-links a,
+  body.a11y-large-text .footer-links a{font-size:1.08em;}
+  body.a11y-high-contrast{
+    --ink:#000000;--ink-soft:#101010;--paper:#FFFFFF;--paper-2:#F1F1F1;--white:#FFFFFF;
+    --rule:#555555;--muted:#303030;--blue:#0039A6;--teal:#006B5E;
+  }
+  body.a11y-high-contrast header.site-header{background:#FFFFFF;border-bottom-color:#555555;}
+  body.a11y-high-contrast .btn-primary{background:#000000;box-shadow:none;}
+  body.a11y-high-contrast .hero{background:#FFFFFF;}
+  body.a11y-easy-read,
+  body.a11y-easy-read *{font-family:'Atkinson Hyperlegible',Verdana,sans-serif;letter-spacing:normal;}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:12px 22px;border-radius:var(--radius);
+    font-size:15px;font-weight:600;text-decoration:none;border:1px solid transparent;
+    cursor:pointer;
+  }
+  .btn-primary{background:linear-gradient(135deg,#6e68ca 0%, #3d31be 100%);color:var(--white);box-shadow:0 10px 22px rgba(61,49,190,.25);}
+  .btn-primary:hover{filter:brightness(1.04);}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+  .btn-small{padding:8px 13px;font-size:13px;}
+
+  @media (max-width:900px){
+    nav.primary-links{display:none;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:72px 0 88px;
+    background:
+      radial-gradient(circle at top left, rgba(46,107,255,.12), transparent 26%),
+      linear-gradient(180deg,var(--paper) 0%, #F1F5FA 100%);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;}
+  .hero-label{color:var(--blue);font-size:14px;font-weight:600;margin-bottom:16px;letter-spacing:.01em;}
+  .hero h1{font-size:clamp(34px,4.6vw,52px);max-width:15ch;letter-spacing:-.055em;}
+  .hero-sub{font-size:18px;color:var(--ink-soft);max-width:52ch;margin-bottom:22px;}
+  .hero-note{font-size:14px;color:var(--muted);margin-top:18px;max-width:44ch;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:8px;}
+  .badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;}
+  .badge{
+    font-size:13px;padding:6px 12px;border:1px solid var(--rule);border-radius:999px;
+    background:var(--white);color:var(--ink-soft);box-shadow:0 6px 14px rgba(11,18,32,.03);
+  }
+
+  .hero-visual{position:relative;}
+  .hero-image-pair{position:relative;min-height:390px;}
+  .hero-image-card{
+    position:absolute;width:78%;background:var(--white);border:1px solid rgba(255,255,255,.9);
+    border-radius:14px;overflow:hidden;box-shadow:0 28px 55px -26px rgba(22,33,58,.5),0 8px 22px rgba(22,33,58,.08);
+    transition:transform .25s ease,box-shadow .25s ease;
+  }
+  .hero-image-card:first-child{top:6px;left:0;width:82%;transform:rotate(-2.5deg);z-index:2;}
+  .hero-image-card:last-child{right:0;bottom:8px;transform:rotate(2.5deg);z-index:1;}
+  .hero-image-card:hover{box-shadow:0 34px 65px -26px rgba(22,33,58,.6),0 10px 28px rgba(22,33,58,.12);}
+  .hero-image-card:first-child:hover{transform:rotate(-1deg) translateY(-4px);}
+  .hero-image-card:last-child:hover{transform:rotate(1deg) translateY(-4px);}
+  .hero-image-card img{display:block;width:100%;height:auto;object-fit:contain;}
+  .feature-screenshot-image{display:block;width:100%;height:auto;border-radius:6px;box-shadow:0 18px 35px -24px rgba(22,33,58,.5);}
+  .feature-row .feature-screenshot-image{
+    transform:rotate(-1.4deg);animation:feature-float-left 7s ease-in-out infinite;
+    transition:transform .3s ease,box-shadow .3s ease;
+  }
+  .feature-row.reverse .feature-screenshot-image{
+    transform:rotate(1.4deg);animation-name:feature-float-right;animation-delay:-3.5s;
+  }
+  .feature-screenshot-image:hover{
+    animation-play-state:paused;transform:translateY(-6px) rotate(0deg) scale(1.01);
+    box-shadow:0 26px 42px -22px rgba(22,33,58,.62);
+  }
+  @keyframes feature-float-left{
+    0%,100%{transform:translateY(0) rotate(-1.4deg);}
+    50%{transform:translateY(-7px) rotate(-.4deg);}
+  }
+  @keyframes feature-float-right{
+    0%,100%{transform:translateY(0) rotate(1.4deg);}
+    50%{transform:translateY(-7px) rotate(.4deg);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .feature-row .feature-screenshot-image,
+    .feature-row.reverse .feature-screenshot-image{animation:none;}
+  }
+  .screenshot-slot{
+    background:transparent;
+    border:0;
+    border-radius:0;
+    padding:0;
+    box-shadow:none;
+  }
+  .screenshot-slot .grid-paper{
+    background-image:
+      linear-gradient(var(--rule) 1px, transparent 1px),
+      linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+    background-size:22px 22px;
+    background-color:var(--paper);
+    border-radius:6px;
+    padding:26px 22px;
+    min-height:220px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:10px;
+  }
+  .grid-paper .eqn{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--ink);}
+  .grid-paper .eqn.muted{color:var(--muted);}
+  .screenshot-caption{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-top:14px;font-size:12.5px;color:var(--muted);
+  }
+  .screenshot-caption .tag{
+    font-family:'IBM Plex Mono',monospace;background:var(--teal-soft);color:var(--teal);
+    padding:2px 8px;border-radius:4px;
+  }
+
+  /* ---------- Section shell ---------- */
+  section{padding:84px 0;}
+  .section-head{max-width:640px;margin-bottom:48px;}
+  .section-head h2{font-size:clamp(26px,3vw,34px);letter-spacing:-.045em;}
+  .section-head p{color:var(--ink-soft);font-size:17px;}
+  .band-teal{
+    position:relative;isolation:isolate;overflow:hidden;width:calc(100% - 48px);max-width:1280px;
+    margin:56px auto;border:1px solid rgba(255,255,255,.1);border-radius:28px;
+    background:
+      linear-gradient(135deg,rgba(110,104,202,.12),transparent 34%),
+      linear-gradient(315deg,rgba(28,199,177,.08),transparent 38%),
+      var(--ink);
+    color:var(--paper);box-shadow:0 30px 70px -34px rgba(11,18,32,.65),0 12px 30px rgba(11,18,32,.12);
+  }
+  .band-teal::before{
+    content:"";position:absolute;inset:0;z-index:-1;opacity:.2;pointer-events:none;
+    background-image:linear-gradient(rgba(215,226,238,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(215,226,238,.16) 1px,transparent 1px);
+    background-size:42px 42px;mask-image:linear-gradient(135deg,black,transparent 72%);
+  }
+  .band-teal::after{
+    content:"";position:absolute;top:28px;right:34px;width:76px;height:4px;border-radius:999px;
+    background:linear-gradient(90deg,#6e68ca,#1cc7b1);box-shadow:0 0 24px rgba(28,199,177,.35);
+  }
+  .band-teal .wrap{position:relative;z-index:1;}
+  .band-teal .section-head{text-align:center;margin-left:auto;margin-right:auto;}
+  .band-teal .section-head p{color:#C7D0CB;}
+  .band-teal h2{color:var(--paper);}
+
+  /* ---------- Modes grid ---------- */
+  .modes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .mode-card{
+    background:var(--white);border:1px solid var(--rule);border-radius:10px;
+    padding:22px;
+  }
+  .mode-card .glyph{font-size:22px;margin-bottom:10px;display:block;}
+  .mode-card h3{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;letter-spacing:-.04em;margin-bottom:6px;}
+  .mode-card p{font-size:14.5px;color:var(--muted);margin:0;}
+  @media (max-width:900px){.modes-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:520px){.modes-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Video block ---------- */
+  .video-block{
+    display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center;
+  }
+  .video-frame{
+    position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden;
+    background:linear-gradient(135deg,var(--ink) 0%, var(--ink-soft) 100%);
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--rule);
+  }
+  .video-frame .play{
+    width:64px;height:64px;border-radius:50%;background:var(--amber);
+    display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  .video-frame .play svg{width:22px;height:22px;fill:var(--ink);}
+  .video-frame .caption{
+    position:absolute;bottom:14px;left:16px;right:16px;
+    font-size:12.5px;color:#C7D0CB;font-family:'IBM Plex Mono',monospace;
+  }
+  .product-video{display:block;width:100%;height:100%;object-fit:cover;border:0;border-radius:inherit;background:var(--ink);}
+  @media (max-width:860px){.video-block{grid-template-columns:1fr;}}
+
+  /* ---------- Features (alternating) ---------- */
+  .feature-row{
+    display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;
+    padding:44px 0;border-top:1px solid var(--rule);
+  }
+  .feature-row:first-of-type{border-top:none;}
+  .feature-row.reverse .feature-text{order:2;}
+  .feature-row.reverse .feature-visual{order:1;}
+  .feature-text h3{font-size:22px;font-weight:700;letter-spacing:-.045em;}
+  .feature-text p{color:var(--ink-soft);}
+  @media (max-width:860px){
+    .feature-row, .feature-row.reverse{grid-template-columns:1fr;}
+    .feature-row.reverse .feature-text{order:1;}
+    .feature-row.reverse .feature-visual{order:2;}
+  }
+
+  .udl-tile{
+    margin-top:12px;
+    background:var(--teal);
+    color:var(--white);
+    border-radius:12px;
+    padding:44px;
+    display:grid;
+    grid-template-columns:.4fr 1fr;
+    gap:36px;
+    align-items:center;
+  }
+  .udl-tile .mark{
+    font-family:'Space Grotesk',sans-serif;font-size:52px;color:var(--amber);line-height:1;
+  }
+  .udl-tile .udl-image{width:100%;max-width:250px;aspect-ratio:4/3;object-fit:cover;border:3px solid rgba(255,255,255,.72);border-radius:10px;box-shadow:0 18px 30px -18px rgba(11,18,32,.45);transform:rotate(-2deg);}
+  .udl-tile h3{color:var(--white);font-size:23px;margin-bottom:12px;}
+  .udl-tile p{color:#DCE8E3;margin:0;font-size:16px;}
+  @media (max-width:700px){.udl-tile{grid-template-columns:1fr;padding:30px;}}
+
+  /* ---------- Steps ---------- */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .step{border-top:2px solid var(--ink);padding-top:16px;}
+  .step .num{font-family:'IBM Plex Mono',monospace;color:var(--teal);font-size:14px;}
+  .step h3{font-size:17px;font-weight:700;font-family:'Space Grotesk',sans-serif;letter-spacing:-.04em;margin:8px 0 6px;}
+  .step p{font-size:14.5px;color:var(--muted);margin:0;}
+  @media (max-width:900px){.steps{grid-template-columns:1fr 1fr;}}
+  @media (max-width:520px){.steps{grid-template-columns:1fr;}}
+
+  /* ---------- Audience ---------- */
+  .audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .audience-card{background:var(--white);border:1px solid var(--rule);border-radius:10px;padding:24px;}
+  .audience-card .glyph{font-size:22px;margin-bottom:10px;display:block;}
+  .audience-card h3{font-family:'Space Grotesk',sans-serif;font-size:16.5px;font-weight:700;letter-spacing:-.04em;margin-bottom:6px;}
+  .audience-card p{font-size:14.5px;color:var(--muted);margin:0;}
+  @media (max-width:900px){.audience-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.audience-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Why list ---------- */
+  .why-list{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:8px;}
+  .why-item{padding:20px 0;border-top:1px solid rgba(242,243,236,.18);}
+  .why-item .glyph{font-size:20px;}
+  .why-item h3{color:var(--paper);font-size:16px;font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.04em;margin:8px 0 4px;}
+  .why-item p{color:#C7D0CB;font-size:14.5px;margin:0;}
+  @media (max-width:900px){.why-list{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.why-list{grid-template-columns:1fr;}}
+
+  .platform-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px;}
+  .platform-row span{
+    font-size:14px;background:var(--white);border:1px solid var(--rule);
+    padding:8px 14px;border-radius:999px;color:var(--ink-soft);
+  }
+  .band-teal .platform-row{justify-content:center;}
+
+  /* ---------- Final CTA ---------- */
+  .final-cta{
+    background:linear-gradient(135deg,var(--white) 0%, var(--paper-2) 100%);border:1px solid var(--rule);border-radius:14px;
+    padding:56px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;
+    box-shadow:0 20px 40px -30px rgba(11,18,32,.25);
+  }
+  .final-cta h2{font-size:28px;margin-bottom:8px;max-width:20ch;letter-spacing:-.05em;}
+  .final-cta p{color:var(--ink-soft);margin:0;max-width:42ch;}
+  .final-cta-actions{display:flex;gap:14px;flex-wrap:wrap;}
+
+  /* ---------- Demo / contact form ---------- */
+  .demo-section{background:var(--white);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+  .demo-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;}
+  .demo-grid h2{font-size:28px;}
+  .demo-grid .contact-detail{margin-top:28px;font-size:15px;color:var(--ink-soft);}
+  .demo-grid .contact-detail strong{display:block;color:var(--ink);font-size:14px;margin-bottom:4px;}
+  form.demo-form{display:grid;gap:16px;}
+  form.demo-form label{display:block;font-size:13.5px;font-weight:600;margin-bottom:6px;}
+  form.demo-form input,
+  form.demo-form select,
+  form.demo-form textarea{
+    width:100%;padding:12px 14px;border:1px solid var(--rule);border-radius:6px;
+    font-family:'Inter',sans-serif;font-size:15px;background:var(--paper);color:var(--ink);
+  }
+  form.demo-form textarea{min-height:110px;resize:vertical;}
+  .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media (max-width:860px){.demo-grid{grid-template-columns:1fr;} .form-row-2{grid-template-columns:1fr;}}
+
+  /* ---------- Footer ---------- */
+  footer{padding:56px 0 40px;}
+  .footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:28px;}
+  .footer-brand{display:flex;align-items:center;gap:10px;}
+  .footer-logo{display:block;width:150px;height:auto;}
+  .footer-links{display:flex;gap:20px;flex-wrap:wrap;font-size:14.5px;align-items:center;}
+  .footer-meta{font-size:13px;color:var(--muted);border-top:1px solid var(--rule);padding-top:20px;}
+
+  @media (max-width:900px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .wrap{padding:0 20px;}
+    .nav{padding:10px 20px;}
+  }
+  @media (max-width:520px){
+    .band-teal{width:calc(100% - 24px);margin:32px auto;border-radius:20px;}
+    .band-teal::after{top:20px;right:22px;width:54px;}
+    .hero-image-pair{min-height:285px;margin:8px 4px 0;}
+    .hero-image-card{width:82%;}
+    .accessibility-toggle{padding:8px;}
+    .accessibility-toggle span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+    .accessibility-panel{position:fixed;right:12px;top:68px;width:min(280px,calc(100vw - 24px));}
+  }
+</style>
+</head>
+<body id="top">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="nav wrap">
+    <a class="brand" href="#top" aria-label="Daqorum SumIt home">
+      <img class="brand-logo" src="Assets/Assets-logo/SumIt Logo001.svg" alt="Daqorum SumIt logo">
+    </a>
+    <nav class="primary-links" aria-label="Primary">
+      <a href="#modes">Modes</a>
+      <a href="#features">Features</a>
+      <a href="#why">Why SumIt</a>
+      <a href="#demo">Contact Us</a>
+      <a href="about.html">About</a>
+      <a href="help.html">Help</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="accessibility">
+        <button class="accessibility-toggle" type="button" aria-expanded="false" aria-controls="accessibility-panel">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.64 5.64l1.41 1.41M16.95 16.95l1.41 1.41M5.64 18.36l1.41-1.41M16.95 7.05l1.41-1.41"></path><circle cx="12" cy="12" r="4"></circle></svg>
+          <span>Accessibility</span>
+        </button>
+        <div class="accessibility-panel" id="accessibility-panel" role="region" aria-labelledby="accessibility-heading" hidden>
+          <h2 id="accessibility-heading">Accessibility options</h2>
+          <p>Your choices are saved on this device.</p>
+          <label class="accessibility-option"><input type="checkbox" data-a11y="high-contrast"> High contrast</label>
+          <label class="accessibility-option"><input type="checkbox" data-a11y="large-text"> Larger text</label>
+          <label class="accessibility-option"><input type="checkbox" data-a11y="easy-read"> Easy-read font</label>
+        </div>
+      </div>
+      <a class="btn btn-primary btn-small" href="https://atsuperstore.com/store/sumit">Buy SumIt</a>
+    </div>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="hero-label">Maths &amp; science equation studio, from Daqorum</p>
+        <h1>Write, speak, draw and graph maths and science notation — anywhere</h1>
+        <p class="hero-sub">SumIt is the equation studio for students, teachers, researchers and STEM teams. Type LaTeX, dictate by voice, handwrite on a touchscreen, calculate, plot functions and render chemistry — then copy or export wherever your work needs to go.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#demo">See SumIt in action</a>
+          <a class="btn btn-ghost" href="about.html">What can it do?</a>
+        </div>
+        <p class="hero-note">Works offline once loaded, with your equations kept on your device while you work.</p>
+        <div class="badge-row">
+          <span class="badge">GCSE, A-Level &amp; IB</span>
+          <span class="badge">Teachers &amp; lecturers</span>
+          <span class="badge">Researchers &amp; engineers</span>
+          <span class="badge">Accessibility-first</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-image-pair" aria-label="SumIt screenshots preview">
+          <figure class="hero-image-card">
+            <img src="Assets/screenshots/editor.png" alt="SumIt editor interface showing maths and chemistry notation">
+          </figure>
+          <figure class="hero-image-card">
+            <img src="Assets/screenshots/graphing.png" alt="SumIt graphing interface showing plotted equations">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VIDEO ===================== -->
+  <section id="video">
+    <div class="wrap video-block">
+      <div>
+        <div class="section-head" style="margin-bottom:16px;">
+          <h2>Watch SumIt in action</h2>
+          <p>A short walkthrough of the studio — from typing an equation to exporting a balanced chemical reaction.</p>
+        </div>
+        <a class="btn btn-primary btn-small" href="#demo">Book a live demo instead</a>
+      </div>
+      <div class="video-frame">
+        <iframe class="product-video" width="560" height="315" src="https://www.youtube.com/embed/OfmGqXqm8UI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MODES ===================== -->
+  <section id="modes">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Seven modes, one studio</h2>
+        <p>Every input style, every level, every subject. Switch modes with one click in the menu drawer; your work moves with you.</p>
+      </div>
+      <div class="modes-grid">
+        <div class="mode-card"><span class="glyph">✏️</span><h3>Editor</h3><p>Type LaTeX with live autocomplete and a 300+ formula library.</p></div>
+        <div class="mode-card"><span class="glyph">🎙️</span><h3>Dictate</h3><p>Speak "x squared plus three x" and get clean notation back.</p></div>
+        <div class="mode-card"><span class="glyph">✍️</span><h3>Draw</h3><p>Handwrite with finger, stylus or trackpad. Recognition runs locally.</p></div>
+        <div class="mode-card"><span class="glyph">🔢</span><h3>Scientific</h3><p>Full scientific calculator with memory, DEG/RAD, function nesting.</p></div>
+        <div class="mode-card"><span class="glyph">📈</span><h3>Graphing</h3><p>Plot up to six functions in Cartesian, polar or parametric form.</p></div>
+        <div class="mode-card"><span class="glyph">⚗️</span><h3>Chemistry</h3><p>Type H2SO4 + 2NaOH and SumIt renders proper formulae.</p></div>
+        <div class="mode-card"><span class="glyph">🕐</span><h3>History</h3><p>Saved equations stay on-device — export them as JSON anytime.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FEATURES ===================== -->
+  <section id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Designed for real maths and science workflows</h2>
+      </div>
+
+      <div class="feature-row">
+        <div class="feature-text">
+          <h3>Type or paste — with smart autocomplete</h3>
+          <p>The Editor is built on MathLive. Type LaTeX, use keyboard shortcuts, or paste from Word. Type the first three letters of a named formula and SumIt suggests it — from "sq" for square root to "schrod" for the Schrödinger equation.</p>
+        </div>
+        <div class="feature-visual screenshot-slot">
+          <img class="feature-screenshot-image" src="Assets/screenshots/autocomplete.png" alt="SumIt autocomplete interface showing formula suggestions">
+        </div>
+      </div>
+
+      <div class="feature-row reverse">
+        <div class="feature-text">
+          <h3>300+ named formulas, filtered by level and subject</h3>
+          <p>Algebra, trig, calculus, statistics, mechanics, electromagnetism, thermodynamics, optics, chemistry — all searchable, all with rendered previews. Filter by age (≤16, 16–18, University) or by syllabus (GCSE, A-Level, IB) so pupils only see what's relevant to them.</p>
+        </div>
+        <div class="feature-visual screenshot-slot">
+          <img class="feature-screenshot-image" src="Assets/screenshots/formulas.png" alt="SumIt formula library showing searchable maths and science formulas">
+        </div>
+      </div>
+
+      <div class="feature-row">
+        <div class="feature-text">
+          <h3>Draw equations by hand — recognised on-device</h3>
+          <p>Sketch with a finger, stylus or trackpad. Two recognisers ship with SumIt: a fast template matcher for everyday symbols, and a neural-network model for messier handwriting. Both run entirely on your device.</p>
+        </div>
+        <div class="feature-visual screenshot-slot">
+          <img class="feature-screenshot-image" src="Assets/screenshots/draw.png" alt="SumIt draw interface showing a handwritten equation">
+        </div>
+      </div>
+
+      <div class="feature-row reverse">
+        <div class="feature-text">
+          <h3>Graph and sonify functions</h3>
+          <p>Plot up to six functions simultaneously in Cartesian, polar or parametric form. Audio-trace any curve to hear the shape — useful for teaching, and essential for visually-impaired pupils.</p>
+        </div>
+        <div class="feature-visual screenshot-slot">
+          <img class="feature-screenshot-image" src="Assets/screenshots/graphing.png" alt="SumIt graphing interface showing plotted functions">
+        </div>
+      </div>
+
+      <div class="feature-row">
+        <div class="feature-text">
+          <h3>Render chemistry too</h3>
+          <p>Type ordinary chemistry shorthand (H2SO4 + 2NaOH -&gt; Na2SO4 + 2H2O) and SumIt renders proper subscripts, charges, and balanced equations via the mhchem package.</p>
+        </div>
+        <div class="feature-visual screenshot-slot">
+          <img class="feature-screenshot-image" src="Assets/screenshots/chemistry.png" alt="SumIt chemistry interface showing a balanced chemical equation">
+        </div>
+      </div>
+
+      <!-- New content tile, added per brief -->
+      <div class="udl-tile">
+        <img class="udl-image" src="Assets/screenshots/editor.png" alt="SumIt Editor interface showing a mathematical equation">
+        <div>
+          <h3>Built on Universal Design for Learning principles</h3>
+          <p>SumIt makes maths and science notation more accessible by removing many of the barriers associated with traditional pen-and-paper methods. With a range of flexible input options, users can create and work with notation in the way that suits them best — opening up greater access to academic study and the workplace.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>From blank slate to clean equation in four steps</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="num mono">01</span>
+          <h3>Open SumIt</h3>
+          <p>Any modern browser, no download or install required. Works on phone, tablet, laptop and Chromebook.</p>
+        </div>
+        <div class="step">
+          <span class="num mono">02</span>
+          <h3>Pick a mode</h3>
+          <p>Editor for typing, Dictate for speaking, Draw for handwriting, Scientific for calculating, Graphing for plotting.</p>
+        </div>
+        <div class="step">
+          <span class="num mono">03</span>
+          <h3>Build the equation</h3>
+          <p>Use the formula library if you'd rather pick from a list. Switch on Physics or Chemistry for mechanics, E&amp;M, quantum and reactions.</p>
+        </div>
+        <div class="step">
+          <span class="num mono">04</span>
+          <h3>Copy or export</h3>
+          <p>LaTeX, MathML, Word-friendly equation, or PNG. Pastes cleanly into Word, Pages, Google Docs, Canvas, Moodle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHO IT'S FOR ===================== -->
+  <section id="audience">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Built for the people who reach for maths and science every day</h2>
+      </div>
+      <div class="audience-grid">
+        <div class="audience-card"><span class="glyph">📚</span><h3>Students</h3><p>GCSE, A-Level, IB and undergraduate maths and science. Fast equation entry for homework, revision notes, exam practice and lab reports.</p></div>
+        <div class="audience-card"><span class="glyph">🎓</span><h3>Teachers &amp; lecturers</h3><p>Build worksheets, write equations and reactions into slides, prepare exam papers, project clean notation during a lesson.</p></div>
+        <div class="audience-card"><span class="glyph">🔬</span><h3>Researchers &amp; scientists</h3><p>Sketch a derivation, copy LaTeX into a paper, balance a reaction, or check a plot before reaching for a heavier tool.</p></div>
+        <div class="audience-card"><span class="glyph">♿</span><h3>Anyone with access needs</h3><p>Dictate by voice, navigate by keyboard, switch to high-contrast themes, have answers read aloud.</p></div>
+        <div class="audience-card"><span class="glyph">🧑‍💻</span><h3>Self-learners</h3><p>A scratchpad and calculator that talks the same language as Khan Academy, Brilliant or your textbook.</p></div>
+        <div class="audience-card"><span class="glyph">🏫</span><h3>Schools on Chromebooks</h3><p>No install required, works offline once cached. Drops into Google Classroom or any LMS.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY SUMIT ===================== -->
+  <section id="why" class="band-teal">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>A focused, distraction-free equation tool</h2>
+        <p>SumIt is built by Daqorum for people who reach for maths and science every day — a fast, focused studio, not another tab full of ads or trackers.</p>
+      </div>
+      <div class="why-list">
+        <div class="why-item"><span class="glyph">🔌</span><h3>Works offline</h3><p>Once it has loaded, no internet connection is needed.</p></div>
+        <div class="why-item"><span class="glyph">🔒</span><h3>Private</h3><p>Equations stay on your device while you work. No ad tracking.</p></div>
+        <div class="why-item"><span class="glyph">⚡</span><h3>Fast</h3><p>Renders in real time — the editor and the whole library live in one tab.</p></div>
+        <div class="why-item"><span class="glyph">🌐</span><h3>Cross-platform</h3><p>One codebase: web, iPhone, iPad, Mac, Android, Chromebook, Windows.</p></div>
+        <div class="why-item"><span class="glyph">♿</span><h3>Accessible</h3><p>WCAG-AA contrast, full keyboard access, screen-reader-friendly.</p></div>
+        <div class="why-item"><span class="glyph">🇬🇧</span><h3>UK English</h3><p>Auto-substitutes "Maths", "Colour", "Recognise" for en-GB locales.</p></div>
+      </div>
+      <div class="platform-row">
+        <span>🌐 Web</span><span>📱 iPhone</span><span>📱 iPad</span><span>💻 Mac</span><span>🤖 Android</span><span>🖥️ Chromebook</span><span>⊞ Windows</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FINAL CTA ===================== -->
+  <section id="buy">
+    <div class="wrap">
+      <div class="final-cta">
+        <div>
+          <h2>Ready to bring SumIt to your students or team?</h2>
+          <p>See it in action, then get SumIt for your school, department or organisation.</p>
+        </div>
+        <div class="final-cta-actions">
+          <a class="btn btn-primary" href="https://atsuperstore.com/store/sumit">Buy SumIt</a>
+          <a class="btn btn-ghost" href="help.html">Read the user guide</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DEMO / CONTACT ===================== -->
+  <section id="demo" class="demo-section">
+    <div class="wrap demo-grid">
+      <div>
+        <h2>Request a demo</h2>
+        <p>Tell us a little about your school, department or team and we'll get back to you to arrange a walkthrough of SumIt.</p>
+        <div class="contact-detail">
+          <strong>Daqorum</strong>
+          hello@daqorum.com<br>
+          01495 123456<br>
+        </div>
+      </div>
+      <!-- This form has no backend wired up yet. See the notes provided
+           alongside this file for how to connect it (e.g. Cloudflare Pages
+           Forms, Formspree, or a mailto/Worker endpoint). -->
+      <form class="demo-form" action="#" method="POST">
+        <div class="form-row-2">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
+        <div>
+          <label for="org">School / organisation</label>
+          <input type="text" id="org" name="org">
+        </div>
+        <div>
+          <label for="message">What would you like to see?</label>
+          <textarea id="message" name="message"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Request demo</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#top" aria-label="Daqorum SumIt home"><img class="footer-logo" src="Assets/Assets-logo/SumIt Logo001.svg" alt="Daqorum SumIt logo"></a>
+      </div>
+      <div class="footer-links">
+        <a href="#modes">Modes</a>
+        <a href="#features">Features</a>
+        <a href="#why">Why SumIt</a>
+        <a href="#demo">Contact Us</a>
+        <a href="about.html">About</a>
+        <a href="help.html">Help</a>
+      </div>
+    </div>
+    <p class="footer-meta">© 2026 Daqorum. All rights reserved. SumIt is a trademark of Daqorum.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var toggle = document.querySelector('.accessibility-toggle');
+    var panel = document.getElementById('accessibility-panel');
+    var options = document.querySelectorAll('[data-a11y]');
+    var storageKey = 'sumit-accessibility';
+
+    function applyOptions(saved) {
+      options.forEach(function (option) {
+        var enabled = Boolean(saved[option.dataset.a11y]);
+        option.checked = enabled;
+        document.body.classList.toggle('a11y-' + option.dataset.a11y, enabled);
+      });
+    }
+
+    var savedOptions = {};
+    try { savedOptions = JSON.parse(localStorage.getItem(storageKey)) || {}; } catch (error) {}
+    applyOptions(savedOptions);
+
+    toggle.addEventListener('click', function () {
+      var isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      panel.hidden = isOpen;
+      if (!isOpen) panel.querySelector('input').focus();
+    });
+
+    options.forEach(function (option) {
+      option.addEventListener('change', function () {
+        savedOptions[option.dataset.a11y] = option.checked;
+        applyOptions(savedOptions);
+        try { localStorage.setItem(storageKey, JSON.stringify(savedOptions)); } catch (error) {}
+      });
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('.accessibility')) {
+        toggle.setAttribute('aria-expanded', 'false');
+        panel.hidden = true;
+      }
+    });
+  }());
+</script>
+
+</body>
+</html>
